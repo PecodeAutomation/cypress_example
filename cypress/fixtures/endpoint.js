@@ -1,3 +1,4 @@
 export const END_POINT = Object.freeze({
-  about: "saucelabs.com"
+  about: "saucelabs.com",
+  user: "user"
 });
