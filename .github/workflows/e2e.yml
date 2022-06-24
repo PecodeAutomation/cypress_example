@@ -6,12 +6,7 @@ on:
       version:
         description: Tag
 
-jobs:
-  printInputs:
-    runs-on: ubuntu-latest
-    steps:
-    - run: |
-        echo "Tags: ${{ github.event.inputs.tags }}" 
+jobs: 
   cypress-e2e-chrome78-ff70:
     name: Run on Chrome
     runs-on: ubuntu-latest
