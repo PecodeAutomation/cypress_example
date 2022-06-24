@@ -1,3 +1,5 @@
+import { homePage } from "../page-objects/home.page";
+
 function typeCredentials(usedLogin, usedPassword) {
   cy.getTestSel("username").click().clear().type(usedLogin);
   cy.getTestSel("password").clear().type(usedPassword);
@@ -6,6 +8,7 @@ function typeCredentials(usedLogin, usedPassword) {
 
 export function performLogin(usedLogin, usedPassword) {
   typeCredentials(usedLogin, usedPassword);
+  homePage.inventoryList().should("be.visible");
 }
 
 export function InvalidLoginValidateError() {

@@ -12,12 +12,12 @@ describe("Ensure that burger menu work with correct behavior", function () {
   });
 
   it("Ensure that about button work", () => {
-    homePage.aboutSidebarButton().should("exist").click();
+    homePage.aboutSidebarButton().should("be.visible").click();
     cy.url().should("include", END_POINT.about);
   });
 
   it("Ensure that logout button work", () => {
-    homePage.logoutSidebarButton().should("exist").click();
+    homePage.logoutSidebarButton().should("be.visible").click();
     cy.url().should("include", envVariables.url);
   });
 });

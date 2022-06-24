@@ -18,13 +18,6 @@ class CardPage {
   checkoutCompleteContainer() {
     return cy.get(".checkout_complete_container");
   }
-
-  salesDetails({ userData }) {
-    this.checkoutInfo().should("be.visible");
-    cy.getTestSel("firstName").type(userData.firstName);
-    cy.getTestSel("lastName").type(userData.lastName);
-    cy.getTestSel("postalCode").type(userData.postalCode);
-  }
 }
 
 export const cardPage = new CardPage();

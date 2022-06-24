@@ -1,8 +1,8 @@
+const { chooseCard, finishSalesDetails } = require("../../models/card");
 const { performLogin } = require("../../models/login");
 const { cardPage } = require("../../page-objects/card.page");
 const { homePage } = require("../../page-objects/home.page");
 
-const REMOVE = "Remove";
 const USER_DATA = {
   firstName: "FirstName",
   lastName: "LastName",
@@ -30,14 +30,9 @@ describe("Ensure that user can buy product", function () {
           .first()
           .invoke("text")
           .then((itemPrice) => {
-            cy.getTestSel("add-to-cart-sauce-labs-backpack").should("be.visible").first().click();
-            cy.getTestSel("remove-sauce-labs-backpack").should("exist").should("have.text", REMOVE);
-            homePage.shoppingCartContainer().click();
+            chooseCard();
             cardPage.cartItem().should("be.visible").should("contain", itemName).and("contain", itemPrice);
-            cy.getTestSel("checkout").click();
-            cardPage.salesDetails({ userData: USER_DATA });
-            cardPage.continueButton().click();
-            cy.getTestSel("finish").click();
+            finishSalesDetails({ userData: USER_DATA });
             cardPage.checkoutCompleteContainer().should("be.visible").contains(SUCCESS_MESSAGE);
           });
       });

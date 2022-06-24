@@ -1,3 +1,4 @@
+const { filterOption } = require("../../models/card");
 const { performLogin } = require("../../models/login");
 const { homePage } = require("../../page-objects/home.page");
 
@@ -14,6 +15,7 @@ describe("Verify data after filtering", function () {
 
   context("Price filtering", () => {
     beforeEach(() => {
+      // Get array with items prices
       homePage
         .inventoryItemPrice()
         .invoke("text")
@@ -22,19 +24,18 @@ describe("Verify data after filtering", function () {
         });
     });
     it("Ensure that price (low to high) work correct", () => {
-      cy.getTestSel("product_sort_container").select("lohi");
-      homePage.inventoryList().should("be.visible");
+      filterOption({ option: "lohi" });
       homePage.inventoryItemPrice().first().should("contain", priceArray[1]);
     });
 
     it("Ensure that price (high to low) work correct", () => {
-      cy.getTestSel("product_sort_container").select("hilo");
-      homePage.inventoryList().should("be.visible");
+      filterOption({ option: "hilo" });
       homePage.inventoryItemPrice().first().should("contain", priceArray.at(-1));
     });
   });
 
   context("Naming filtering", () => {
+    // Get array with items names
     beforeEach(() => {
       homePage
         .inventoryList()
@@ -48,15 +49,14 @@ describe("Verify data after filtering", function () {
         });
       nameList.sort();
     });
+
     it("Ensure that name (A to Z) work correct", () => {
-      cy.getTestSel("product_sort_container").select("az");
-      homePage.inventoryList().should("be.visible");
+      filterOption({ option: "az" });
       homePage.inventoryItemName().first().should("contain", nameList[0]);
     });
 
     it("Ensure that name (Z to A) work correct", () => {
-      cy.getTestSel("product_sort_container").select("za");
-      homePage.inventoryList().should("be.visible");
+      filterOption({ option: "za" });
       homePage.inventoryItemName().first().should("contain", nameList.at(-1));
     });
   });
