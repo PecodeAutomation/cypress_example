@@ -8,7 +8,6 @@ function typeCredentials(usedLogin, usedPassword) {
 
 export function performLogin(usedLogin, usedPassword) {
   typeCredentials(usedLogin, usedPassword);
-  homePage.inventoryList().should("be.visible");
 }
 
 export function InvalidLoginValidateError() {
