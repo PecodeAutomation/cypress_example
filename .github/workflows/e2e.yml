@@ -3,6 +3,9 @@ name: Cypress Tests
 on:
   repository_dispatch:
   workflow_dispatch:
+    inputs:
+        tags:
+          description: 'Test scenario tags'  
   schedule:
     - cron: '0 1 * * *'
 
