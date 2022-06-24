@@ -1,7 +1,6 @@
 name: Cypress Tests
 
 on:
-  repository_dispatch:
   workflow_dispatch:
     inputs:
         tags:
