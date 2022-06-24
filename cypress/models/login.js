@@ -5,9 +5,9 @@ function typeCredentials(usedLogin, usedPassword) {
 }
 
 export function performLogin(usedLogin, usedPassword) {
-    typeCredentials(usedLogin, usedPassword);
+  typeCredentials(usedLogin, usedPassword);
 }
 
-export function InvalidLoginValidateError(){
-  cy.getTestSel("error").contains("Epic sadface: Username and password do not match any user in this service")
+export function InvalidLoginValidateError() {
+  cy.getTestSel("error").contains("Epic sadface: Username and password do not match any user in this service");
 }

@@ -14,19 +14,18 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-	// returning false here prevents Cypress from
-	// failing the test
-	return false
+Cypress.on("uncaught:exception", (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false;
 });
 
-
-//workaround for XHR requests issue 
+//workaround for XHR requests issue
 // Cypress.on('window:load', (window) => {
 // 	// Get webApp iframe
 // 	const docIframe = window.parent.document.getElementById("Your App: 'itg.js'");

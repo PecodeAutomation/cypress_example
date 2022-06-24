@@ -1,17 +1,15 @@
 class BasePage {
+  currentUrl() {
+    return cy.url();
+  }
 
-    currentUrl() {
-        return cy.url();
-    }
+  getTitle() {
+    return cy.title();
+  }
 
-    getTitle() {
-        return cy.title();
-    }
-
-    button(value) {
-        return cy.get(`button:contains(${value})`);
-    }
-
+  button(value) {
+    return cy.get(`button:contains(${value})`);
+  }
 }
 
 export default BasePage;

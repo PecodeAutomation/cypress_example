@@ -17,36 +17,35 @@
  */
 
 module.exports = (on, config) => {
-	// `on` is used to hook into various events Cypress emits
-	// `config` is the resolved Cypress config
-	// console.log(config) // see what all is in here!
+  // `on` is used to hook into various events Cypress emits
+  // `config` is the resolved Cypress config
+  // console.log(config) // see what all is in here!
 
-	on('task', {
-		log(message) {
-			console.log(message);
-			return null;
-		}
-	});
+  on("task", {
+    log(message) {
+      console.log(message);
+      return null;
+    }
+  });
 
-	on('task', {
-		datenow() {
-			return Date.now()
-		}
-	})
+  on("task", {
+    datenow() {
+      return Date.now();
+    }
+  });
 
-	const { downloadFile } = require('cypress-downloadfile/lib/addPlugin')
-	module.exports = (on, config) => {
-		on('task', { downloadFile })
-	}
-	/**
-	 * fix for issue "Cypress runs commands twice when no baseUrl defined"
-	 */
-	// const env = config.env.environment;
-	// const url = config.env[env].core_url;
+  const { downloadFile } = require("cypress-downloadfile/lib/addPlugin");
+  module.exports = (on, config) => {
+    on("task", { downloadFile });
+  };
+  /**
+   * fix for issue "Cypress runs commands twice when no baseUrl defined"
+   */
+  // const env = config.env.environment;
+  // const url = config.env[env].core_url;
 
-	// // modify config values
-	// config.baseUrl = url;
+  // // modify config values
+  // config.baseUrl = url;
 
-	return config;
-}
-
+  return config;
+};
