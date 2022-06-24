@@ -2,7 +2,7 @@ const { performLogin, InvalidLoginValidateError } = require("../../models/login"
 
 describe('Login Tests', function () {
 
-	let envVariables = Cypress.env(Cypress.env('environment'));
+	const envVariables = Cypress.env(Cypress.env('environment'));
 
 	beforeEach(() => {
 		cy.visit(envVariables.url);

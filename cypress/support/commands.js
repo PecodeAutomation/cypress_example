@@ -15,6 +15,10 @@ Cypress.Commands.add("restoreLocalStorage", () => {
 	});
 });
 
+Cypress.Commands.add("getTestSel", (selectorName) => {
+	return cy.get(`[data-test="${selectorName}"]`)
+});
+
 Cypress.Commands.add('setJSON', (username, password = '12345678') => {
 	return cy.readFile('cypress/fixtures/data.json', (err, data) => {
 		if (err) {
